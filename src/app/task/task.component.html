@@ -1,0 +1,21 @@
+<div class="item" (swipeLeft)="onMove()">
+  <table>
+    <tbody>
+      <tr>
+        <td class="task-category">
+          <div (click)="todoService.changeStatus(task.taskId)" class="circular-filled" *ngIf="task.status == 1"><i class='bx bx-check'></i></div>
+          <div 
+            (click)="todoService.changeStatus(task.taskId)"
+            class="circular" 
+            *ngIf="task.status == 0"
+            [ngClass]="{'magenta': task.category == 'business', 'blue': task.category == 'personal'}"
+           ></div>
+        </td>
+        <td class="task-name" (click)="openEditPage()">
+          <span *ngIf="task.status == 0">{{ task.name }}</span>
+          <span *ngIf="task.status == 1"><s>&nbsp;{{ task.name }}&nbsp;&nbsp;</s></span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
